@@ -1,7 +1,5 @@
-'''
-Функція повертає іменинників від поточної дати (включно) на тиждень вперед
-'''
 from datetime import datetime, timedelta
+
 current_year = datetime.now().year
 
 users = [
@@ -12,8 +10,7 @@ users = [
     {'name': 'Olia', 'birthday': datetime(year=current_year, month=5, day=24)},
     {'name': 'Maryana', 'birthday': datetime(year=current_year, month=5, day=24)},
     {'name': 'Taras', 'birthday': datetime(year=current_year, month=5, day=25)},
-    {'name': 'Igor', 'birthday': datetime(year=current_year, month=5, day=21)},
-    {'name': 'Andrij', 'birthday': datetime(year=current_year, month=5, day=26)},
+    {'name': 'Igor', 'birthday': datetime(year=current_year, month=5, day=21)}
 ]
 
 def get_birthdays_per_week(users):
@@ -27,7 +24,7 @@ def get_birthdays_per_week(users):
         weekdays.append(days_of_week[index])
 
     for day in weekdays:
-        if day == 'Saturday' or day == 'Sunday':
+        if day in ('Saturday', 'Sunday'):
             next_day = 'Monday'
         else:
             next_day = day
@@ -39,5 +36,4 @@ def get_birthdays_per_week(users):
 
         if birthday_users:
             print(f"{day}: {', '.join(birthday_users)}")
-
-print(get_birthdays_per_week(users))
+get_birthdays_per_week(users)
